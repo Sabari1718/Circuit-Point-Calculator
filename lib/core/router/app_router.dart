@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/power_calculator/presentation/power_calculator_screen.dart';
 import '../../features/resistor_calculator/presentation/resistor_calculator_screen.dart';
+import '../../features/capacitor_calculator/presentation/capacitor_calculator_screen.dart';
 import '../../features/history/presentation/history_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
 import '../../features/calculators/presentation/calculators_screen.dart';
@@ -66,6 +67,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: _rootNavigatorKey,
         path: AppConstants.routeResistorCalculator,
         builder: (context, state) => const ResistorCalculatorScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: AppConstants.routeCapacitorCalculator,
+        builder: (context, state) => const CapacitorCalculatorScreen(),
       ),
       // Electronics sub-routes
       GoRoute(

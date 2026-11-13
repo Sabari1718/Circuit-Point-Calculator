@@ -2,7 +2,8 @@ import 'dart:convert';
 
 enum CalculationType {
   power,
-  resistor;
+  resistor,
+  capacitor;
 
   String get displayName {
     switch (this) {
@@ -10,6 +11,8 @@ enum CalculationType {
         return 'Power Calculator';
       case CalculationType.resistor:
         return 'Resistor Colour Code';
+      case CalculationType.capacitor:
+        return 'Capacitor Calculator';
     }
   }
 
@@ -18,6 +21,7 @@ enum CalculationType {
     if (value is CalculationType) return value;
     final str = value.toString().toLowerCase();
     if (str.contains('resistor')) return CalculationType.resistor;
+    if (str.contains('capacitor')) return CalculationType.capacitor;
     return CalculationType.power;
   }
 }
@@ -44,6 +48,8 @@ class CalculationRecord {
   });
 
   bool get isPower => type == CalculationType.power;
+  bool get isResistor => type == CalculationType.resistor;
+  bool get isCapacitor => type == CalculationType.capacitor;
   String get typeDisplayName => type.displayName;
 
   Map<String, dynamic> toJson() => {

@@ -151,6 +151,21 @@ class HomeScreen extends ConsumerWidget {
                       context.push(AppConstants.routeResistorCalculator),
                   tag: 'IEC 60062',
                 ),
+                const SizedBox(height: 14),
+                _FeatureCard(
+                  title: 'Capacitor Calculator',
+                  subtitle: 'EIA 3-Digit & Networks',
+                  description: 'Decode codes (e.g. 104 = 100nF), calculate series/parallel and RC energy',
+                  icon: Icons.battery_charging_full_rounded,
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF00B4D8), Color(0xFF0077B6)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  onTap: () =>
+                      context.push(AppConstants.routeCapacitorCalculator),
+                  tag: 'EIA-198',
+                ),
                 const SizedBox(height: 28),
 
                 // ── Electronics Catalog ───────────────────────
@@ -512,7 +527,17 @@ class _HistoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isPower = record.isPower;
-    final color = isPower ? AppColors.primary : AppColors.secondary;
+    final isResistor = record.type == CalculationType.resistor;
+    final color = isPower
+        ? AppColors.primary
+        : isResistor
+            ? AppColors.secondary
+            : AppColors.accent;
+    final icon = isPower
+        ? Icons.electric_bolt_rounded
+        : isResistor
+            ? Icons.tune_rounded
+            : Icons.battery_charging_full_rounded;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
@@ -532,7 +557,7 @@ class _HistoryTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(
-              isPower ? Icons.electric_bolt_rounded : Icons.tune_rounded,
+              icon,
               color: color,
               size: 18,
             ),
@@ -615,6 +640,12 @@ class _FormulaReference extends StatelessWidget {
           title: 'Resistor (4-band)',
           formula: 'R = (d1×10 + d2) × multiplier',
           description: 'IEC 60062 standard colour band coding',
+        ),
+        SizedBox(height: 10),
+        FormulaCard(
+          title: 'Capacitor EIA Code & Charge',
+          formula: 'C = (d1×10 + d2) × 10^d3 pF   |   Q = C × V',
+          description: 'EIA 3-digit marking and electrostatic charge formula',
         ),
       ],
     );

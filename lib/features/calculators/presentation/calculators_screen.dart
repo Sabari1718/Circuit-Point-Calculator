@@ -52,6 +52,24 @@ class CalculatorsScreen extends StatelessWidget {
             ],
             onTap: () => context.push(AppConstants.routeResistorCalculator),
           ),
+          const SizedBox(height: 16),
+          _CalcCard(
+            title: 'Capacitor Calculator',
+            description:
+                'EIA 3-digit code decoder, series/parallel & charge/energy calculations',
+            icon: Icons.battery_charging_full_rounded,
+            gradient: const LinearGradient(
+              colors: [Color(0xFF00B4D8), Color(0xFF0077B6)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            features: [
+              '3-Digit EIA (e.g. 104 = 100nF)',
+              'Series & Parallel Equiv.',
+              'Q = C × V | E = ½ C V²',
+            ],
+            onTap: () => context.push(AppConstants.routeCapacitorCalculator),
+          ),
           const SizedBox(height: 24),
           Text(
             'Coming Soon',
@@ -67,13 +85,6 @@ class CalculatorsScreen extends StatelessWidget {
             title: 'Ohm\'s Law Calculator',
             description: 'Calculate voltage, current, resistance and power using Ohm\'s Law',
             icon: Icons.electrical_services_rounded,
-          ),
-          const SizedBox(height: 10),
-          _ComingSoonCard(
-            title: 'Capacitor Calculator',
-            description:
-                'Capacitance, charge, energy and RC time constant calculations',
-            icon: Icons.battery_charging_full_rounded,
           ),
           const SizedBox(height: 10),
           _ComingSoonCard(

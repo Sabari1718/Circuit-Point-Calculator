@@ -146,8 +146,17 @@ class _HistoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isPower = record.type == CalculationType.power;
-    final color = isPower ? AppColors.primary : AppColors.secondary;
-    final icon = isPower ? Icons.electric_bolt_rounded : Icons.tune_rounded;
+    final isResistor = record.type == CalculationType.resistor;
+    final color = isPower
+        ? AppColors.primary
+        : isResistor
+            ? AppColors.secondary
+            : AppColors.accent;
+    final icon = isPower
+        ? Icons.electric_bolt_rounded
+        : isResistor
+            ? Icons.tune_rounded
+            : Icons.battery_charging_full_rounded;
     final dateStr = DateFormat('MMM d, yyyy – h:mm a').format(record.timestamp);
 
     return Container(

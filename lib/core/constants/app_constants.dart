@@ -21,6 +21,7 @@ class AppConstants {
   static const String routeCalculators = '/calculators';
   static const String routePowerCalculator = '/power-calculator';
   static const String routeResistorCalculator = '/resistor-calculator';
+  static const String routeCapacitorCalculator = '/capacitor-calculator';
   static const String routeHistory = '/history';
   static const String routeSettings = '/settings';
 
